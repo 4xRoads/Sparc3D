@@ -1,0 +1,8 @@
+config.yaml
+drafts/*.md
+!drafts/.gitkeep
+
+__pycache__/
+*.pyc
+.venv/
+venv/

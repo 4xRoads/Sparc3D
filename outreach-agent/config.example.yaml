@@ -1,0 +1,30 @@
+# ---------------------------------------------------------------------------
+# Outreach agent configuration
+#
+# Copy to config.yaml and fill in. config.yaml is gitignored.
+# Secrets come from the environment, never this file:
+#   ANTHROPIC_API_KEY   — for drafting (the Claude API)
+#   RESEND_API_KEY      — for sending (Resend)
+# ---------------------------------------------------------------------------
+
+# Model used to draft emails and the blog post.
+model: claude-opus-4-8
+
+# The verified sending identity in your Resend account.
+from: "Darren Small <darren.small@midnyt.ai>"
+
+# A short, stable description of the product/company. Gives the model the
+# voice and context it needs so every draft sounds like you, not a template.
+brand_context: |
+  Midnyt is <one or two sentences: what you build, who it's for, the wedge>.
+  Voice: <e.g. direct, technical, a little irreverent — no corporate filler>.
+
+# Recipient lists per segment. The agent drafts one email per segment; the
+# `send` command mails a segment's draft to the addresses listed here.
+segments:
+  customers:
+    - customer1@example.com
+  prospects:
+    - prospect1@example.com
+  investors:
+    - investor1@example.com
