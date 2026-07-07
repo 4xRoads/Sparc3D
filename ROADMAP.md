@@ -3,10 +3,13 @@
 ## Shipped
 
 - **`email-warmer/`** — self-hosted Gmail/Workspace domain warming bot.
+  **PAUSED** — development stopped per request; code left in place.
 - **`outreach-agent/`** — drafts segmented emails (customers / prospects /
   investors) + a blog post from raw work notes and sends approved ones via
-  Resend. Staged-draft-first: nothing sends without explicit approval. This is
-  the "agent that writes emails off my progress" ask — scaffold is in place.
+  Resend. Staged-draft-first: nothing sends without explicit approval.
+- **`progress-bot/`** — tracks activity in 4xRoads/midnyt-pipeline and writes
+  daily/weekly progress updates. Deployed as two scheduled Routines in this
+  environment: daily at 12PM ET, weekly Friday 9AM ET.
 
 ## Next on the outreach agent
 

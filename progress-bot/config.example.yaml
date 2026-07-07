@@ -1,0 +1,27 @@
+# ---------------------------------------------------------------------------
+# Progress bot configuration
+#
+# Copy to config.yaml (gitignored). Secrets come from the environment:
+#   ANTHROPIC_API_KEY  — for writing the update (the Claude API)
+#   RESEND_API_KEY     — optional; enables the email delivery
+# ---------------------------------------------------------------------------
+
+project: "Midnyt Pipeline"
+
+# Local path to the repo whose activity is tracked. The scheduled runner keeps
+# this cloned/fetched at runtime.
+repo_path: /workspace/midnyt-pipeline
+
+model: claude-opus-4-8
+
+# How far back each cadence looks, in days.
+daily_days: 1
+weekly_days: 7
+
+# Email delivery (best-effort; skipped if RESEND_API_KEY is unset).
+from: "Midnyt Progress <darren.small@midnyt.ai>"
+to:
+  - darren.small@midnyt.ai
+
+# Where the markdown report files are written (always produced).
+reports_dir: reports
