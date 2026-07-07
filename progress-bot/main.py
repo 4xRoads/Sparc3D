@@ -17,6 +17,7 @@ import yaml
 
 from collect import gather, to_prompt_text
 from notify import email, write_report
+from render import render_email
 from report import write_update
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -44,7 +45,9 @@ def run(cadence: str, cfg: dict) -> None:
     print(f"Report: {path}")
 
     subject = f"[{cadence.capitalize()}] {update.title}"
-    sent = email(cfg["from"], cfg.get("to", []), subject, update.summary_markdown)
+    html_body = render_email(update.title, update.summary_markdown, cadence, activity)
+    sent = email(cfg["from"], cfg.get("to", []), subject,
+                 update.summary_markdown, html=html_body)
     print("Emailed." if sent else "Email skipped (RESEND_API_KEY unset or no recipients).")
 
 

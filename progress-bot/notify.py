@@ -19,16 +19,23 @@ def write_report(reports_dir: str, cadence: str, title: str, body_md: str) -> st
     return path
 
 
-def email(sender: str, to: list[str], subject: str, text: str) -> str | None:
-    """Best-effort email. Returns the Resend id, or None if not configured."""
+def email(sender: str, to: list[str], subject: str, text: str,
+          html: str | None = None) -> str | None:
+    """Best-effort email. Returns the Resend id, or None if not configured.
+
+    Sends the branded HTML when provided, with `text` as the plain-text fallback.
+    """
     api_key = os.environ.get("RESEND_API_KEY")
     if not api_key or not to:
         return None
+    payload = {"from": sender, "to": to, "subject": subject, "text": text}
+    if html:
+        payload["html"] = html
     resp = requests.post(
         RESEND_ENDPOINT,
         headers={"Authorization": f"Bearer {api_key}",
                  "Content-Type": "application/json"},
-        json={"from": sender, "to": to, "subject": subject, "text": text},
+        json=payload,
         timeout=30,
     )
     if resp.status_code >= 300:

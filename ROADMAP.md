@@ -2,8 +2,9 @@
 
 ## Shipped
 
-- **`email-warmer/`** — self-hosted Gmail/Workspace domain warming bot.
-  **PAUSED** — development stopped per request; code left in place.
+- **email warming bot** — self-hosted Gmail/Workspace domain warming bot.
+  **PAUSED** and **relocated** to `4xroads/midnyt-pipeline` (branch
+  `claude/email-warmer`, `email-warmer/`); no longer in this repo.
 - **`outreach-agent/`** — drafts segmented emails (customers / prospects /
   investors) + a blog post from raw work notes and sends approved ones via
   Resend. Staged-draft-first: nothing sends without explicit approval.
@@ -27,7 +28,8 @@
 
 ## Next on the warming product (if commercialized)
 
-See `email-warmer/PRICING.md` for the pricing decision and the "unlimited" flag,
+See `email-warmer/PRICING.md` in the midnyt-pipeline repo for the pricing
+decision and the "unlimited" flag,
 and the multi-tenant architecture note in the session history: a seller product
 needs per-customer OAuth vaults, a cross-tenant matching engine, and abuse
 controls.
